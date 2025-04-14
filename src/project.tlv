@@ -50,7 +50,7 @@
          $digit[3:0] =
            >>1$digit[3:0] == 4'b1111
            ? 4'b0000 :
-           ($button == 0'b1) && (>>1$button == 1'b1)
+           ($button == 1'b1) && (>>1$button == 1'b0)
            ? >>1$digit + 1 :
            $digit;
 
