@@ -46,9 +46,7 @@
    
 
    |counter
-      @0
-         $reset = *reset;
-                  
+      @0                  
          $digit[3:0] =
            >>1$digit[3:0] == 4'b1111
            ? 4'b0000 :
@@ -87,62 +85,6 @@
            ? 8'b01111001 :
            8'b01110001; // F 
    
-/*
-   |calc
-      @0
-         $reset = *reset;
-         
-         $equals_in = *ui_in[7];
-         $op[1:0] = *ui_in[5:4];
-         $val1[7:0] = >>1$out;
-         $val2[7:0] = {4'b0000, *ui_in[3:0]};
-         $out[7:0] =
-               ! $valid
-               ? >>1$out :
-               $op[1:0] == 2'b00
-               ? $val1 + $val2 :
-               $op[1:0] == 2'b01
-               ? $val1 - $val2 :
-               $op[1:0] == 2'b10
-               ? $val1 * $val2 :
-               $val1 / $val2;
-         
-         $valid = $equals_in && ! >>1$equals_in;
-
-         $digit[3:0] = $out[3:0];
-         *uo_out =
-            $digit[3:0] == 4'b0000
-           ? 8'b00111111 :
-           $digit[3:0] == 4'b0001
-           ? 8'b00000110 :
-           $digit[3:0] == 4'b0010
-           ? 8'b01011011 :
-           $digit[3:0] == 4'b0011
-           ? 8'b01001111 :
-           $digit[3:0] == 4'b0100
-           ? 8'b01100110 :
-           $digit[3:0] == 4'b0101
-           ? 8'b01101101 :
-           $digit[3:0] == 4'b0110
-           ? 8'b01111101 :
-           $digit[3:0] == 4'b0111
-           ? 8'b00000111 :
-           $digit[3:0] == 4'b1000
-           ? 8'b01111111 :
-           $digit[3:0] == 4'b1001
-           ? 8'b01101111 :
-           $digit[3:0] == 4'b1010 // a
-           ? 8'b01011111 :
-           $digit[3:0] == 4'b1011 // b
-           ? 8'b01111100 :
-           $digit[3:0] == 4'b1100 // C
-           ? 8'b00111001 :
-           $digit[3:0] == 4'b1101 // d
-           ? 8'b01011110 :
-           $digit[3:0] == 4'b1110 // E
-           ? 8'b01111001 :
-           8'b01110001; // F
-*/
    // Note that pipesignals assigned here can be found under /fpga_pins/fpga.
    
    
